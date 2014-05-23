@@ -1,6 +1,6 @@
 Name:           SkyX
 Version:        0.4
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Photo-realistic sky simulator
 
 License:        LGPLv2+
@@ -79,6 +79,9 @@ mv %{buildroot}/%{_usr}/lib %{buildroot}%{_libdir}
 %{_datadir}/SKYX/cmake
 
 %changelog
+* Sat May 24 2014 Petr Machata <pmachata@redhat.com> - 0.4-5
+- Rebuild for boost 1.55.0
+
 * Sun Oct 20 2013 Rich Mattes <richmattes@gmail.com> - 0.4-4
 - Fix build on i686 systems
 - Correct project URL
