@@ -1,16 +1,19 @@
 Name:           SkyX
 Version:        0.4
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Photo-realistic sky simulator
 
 License:        LGPLv2+
-URL:            http://www.paradise-studios.net/?page_id=183
+URL:            http://www.paradise-sandbox.com/#hydraxskyx.php
 Source0:        http://modclub.rigsofrods.com/xavi/SkyX/SkyX-v0.4.rar
 Source1:        http://modclub.rigsofrods.com/xavi/SkyX/SkyX-v0.3_CMake.rar
 # This patch contains some modifications made by the Gazebo project.
 # It is mostly comment changes, but there are some API extensions needed
 # by the gazebo robot simulator.
 Patch0:         skyx_gazebo.patch
+# This patch fixes some issues with building against Ogre 1.9.
+# Not submitted upstream
+Patch1:         %{name}-0.4-ogre19.patch
 
 BuildRequires:  cmake
 BuildRequires:  boost-devel
@@ -41,6 +44,7 @@ rm -rf SkyX-v0.*
 rm -f SkyXCommon/Bin/Media/packs/OgreCore.zip
 
 %patch0 -p1
+%patch1 -p0 -b .ogre19
 
 # Remove Windows line endings
 dos2unix Readme.txt License.txt
@@ -79,6 +83,10 @@ mv %{buildroot}/%{_usr}/lib %{buildroot}%{_libdir}
 %{_datadir}/SKYX/cmake
 
 %changelog
+* Tue Jun 10 2014 Rich Mattes <richmattes@gmail.com> - 0.4-7
+- Rebuild for ogre 1.9
+- Update upstream URL
+
 * Fri Jun 06 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
