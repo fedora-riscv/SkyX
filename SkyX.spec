@@ -15,6 +15,7 @@ Patch0:         skyx_gazebo.patch
 # Not submitted upstream
 Patch1:         %{name}-0.4-ogre19.patch
 
+BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  boost-devel
 BuildRequires:  ogre-devel
