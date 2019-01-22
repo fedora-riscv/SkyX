@@ -68,8 +68,7 @@ mv %{buildroot}/SKYX/cmake %{buildroot}%{_datadir}/SKYX
 mv %{buildroot}/%{_usr}/lib %{buildroot}%{_libdir}
 %endif
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %doc License.txt Readme.txt
