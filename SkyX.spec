@@ -64,7 +64,7 @@ make %{?_smp_mflags}
 %install
 make -C build install DESTDIR=%{buildroot}
 mv %{buildroot}/SKYX/cmake %{buildroot}%{_datadir}/SKYX
-%if %{_lib} == "lib64"
+%if "%{_lib}" == "lib64"
 mv %{buildroot}/%{_usr}/lib %{buildroot}%{_libdir}
 %endif
 
