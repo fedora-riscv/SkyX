@@ -4,7 +4,7 @@
 
 Name:           SkyX
 Version:        0.4
-Release:        28%{?dist}
+Release:        29%{?dist}
 Summary:        Photo-realistic sky simulator
 
 License:        LGPLv2+
@@ -84,6 +84,9 @@ mv %{buildroot}/%{_usr}/lib %{buildroot}%{_libdir}
 %{_datadir}/SKYX/cmake
 
 %changelog
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-28
 - Second attempt - Rebuilt for
   https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
