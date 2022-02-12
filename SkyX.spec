@@ -9,8 +9,20 @@ Summary:        Photo-realistic sky simulator
 
 License:        LGPLv2+
 URL:            http://www.paradise-sandbox.com/#hydraxskyx.php
-Source0:        http://modclub.rigsofrods.com/xavi/SkyX/SkyX-v0.4.rar
-Source1:        http://modclub.rigsofrods.com/xavi/SkyX/SkyX-v0.3_CMake.rar
+
+# Source archives were manually extracted from rar files and re-compressed into
+# gzip-ed tar files to remove the need for the unar tool during build.
+# Original source files located at:
+# http://modclub.rigsofrods.com/xavi/SkyX/SkyX-v0.4.rar
+# http://modclub.rigsofrods.com/xavi/SkyX/SkyX-v0.3_CMake.rar
+# Recompressed with commands:
+# unar SkyX-v0.4.rar 
+# tar caf SkyX-v0.4.tar.gz SkyX-v0.4
+# unar SkyX-v0.3_CMake.rar 
+# tar caf SkyX-v0.3_CMake.tar.gz SkyX-v0.3
+Source0:        SkyX-v0.4.tar.gz
+Source1:        SkyX-v0.3_CMake.tar.gz
+
 # This patch contains some modifications made by the Gazebo project.
 # It is mostly comment changes, but there are some API extensions needed
 # by the gazebo robot simulator.
@@ -25,7 +37,6 @@ BuildRequires:  boost-devel
 BuildRequires:  ogre-devel
 BuildRequires:  ois-devel
 BuildRequires:  dos2unix
-BuildRequires:  unar
 
 %description
 SkyX is a photo-realistic, simple and fast sky simulator.  It can be used
@@ -41,9 +52,9 @@ developing applications that use %{name}.
 
 %prep
 %setup -T -c
-unar %{SOURCE0}
+tar -xf %{SOURCE0}
 mv SkyX-v0.4/* .
-unar %{SOURCE1}
+tar -xf %{SOURCE1}
 cp -r SkyX-v0.3/* .
 rm -rf SkyX-v0.*
 rm -f SkyXCommon/Bin/Media/packs/OgreCore.zip
@@ -84,6 +95,9 @@ mv %{buildroot}/%{_usr}/lib %{buildroot}%{_libdir}
 %{_datadir}/SKYX/cmake
 
 %changelog
+* Sat Feb 12 2022 Rich Mattes <richmattes@gmail.com> - 0.4-31
+- Re-compress sources as tar files to work around unar failre on s390
+
 * Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-31
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
