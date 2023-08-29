@@ -4,7 +4,7 @@
 
 Name:           SkyX
 Version:        0.4
-Release:        33%{?dist}
+Release:        33.rv64%{?dist}
 Summary:        Photo-realistic sky simulator
 
 License:        LGPLv2+
@@ -34,6 +34,7 @@ Patch1:         %{name}-0.4-ogre19.patch
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  boost-devel
+BuildRequires:  boost-static
 BuildRequires:  ogre-devel
 BuildRequires:  ois-devel
 BuildRequires:  dos2unix
@@ -95,6 +96,9 @@ mv %{buildroot}/%{_usr}/lib %{buildroot}%{_libdir}
 %{_datadir}/SKYX/cmake
 
 %changelog
+* Tue Aug 29 2023 Liu Yang <Yang.Liu.sn@gmail.com> - 0.4-33.rv64
+- Fix build on riscv64.
+
 * Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-33
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
